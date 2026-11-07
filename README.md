@@ -15,5 +15,5 @@ docker compose up -d
 
 ## Заполнить базу тестовыми данными
 ```bash
-docker exec -it app npx tsx prisma/seed.ts
+docker exec -it app npx tsx src/prisma/seed.ts
 ```
