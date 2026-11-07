@@ -12,3 +12,8 @@
 cp .env.example .env
 docker compose up -d
 ```
+
+## Заполнить базу тестовыми данными
+```bash
+docker exec -it app npx tsx prisma/seed.ts
+```

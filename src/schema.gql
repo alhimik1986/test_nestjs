@@ -38,5 +38,6 @@ type Profile {
 }
 
 type Query {
+  profiles(limit: Int!, offset: Int!): Profile
   profile(id: ID!): Profile
 }
