@@ -11,6 +11,7 @@
 ```bash
 cp .env.example .env
 docker compose up -d
+docker exec -it app npx prisma db migrate
 ```
 
 ## Заполнить базу тестовыми данными

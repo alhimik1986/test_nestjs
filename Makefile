@@ -1,3 +1,9 @@
+# Установить приложение (первый запуск)
+install:
+	mkdir -p .env && cp .env.example .env
+	docker compose up -d
+	docker exec -it app npx prisma db migrate
+
 # Войти в контейнер приложения
 cmd:
 	docker exec -it app /bin/sh
@@ -20,4 +26,4 @@ migrate:
 
 # Заполнить базу тестовыми данными
 seed:
-	docker exec -it app npx tsx prisma/seed.ts
+	docker exec -it app npx tsx src/prisma/seed.ts

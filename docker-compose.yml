@@ -18,7 +18,8 @@ services:
       retries: 10
 
   app:
-    image: node:26-alpine
+    build:
+      context: .
     container_name: app
     working_dir: /app
     volumes:
@@ -35,9 +36,6 @@ services:
         condition: service_healthy
     command: >
       sh -c "
-          npm i -g @nestjs/cli
-          npm install &&
-          npx prisma db migrate &&
           npm run start:dev
       "
 
