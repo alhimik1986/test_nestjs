@@ -1,11 +1,10 @@
-import 'dotenv/config';
+import { env } from 'process';
 import { definePrismaConfig } from 'prisma/config';
 import { defineConfig as definePostgresConfig } from '@prisma/orm-postgres/config';
 
 
-process.loadEnvFile('./.env');
-if (!process.env['DATABASE_URL']) {
-  throw new Error('DATABASE_URL is not set');
+if (!env?.DATABASE_URL) {
+  throw new Error('DATABASE_URL is not defined');
 }
 
 // noinspection JSUnusedGlobalSymbols

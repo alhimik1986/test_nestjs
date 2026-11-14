@@ -14,31 +14,31 @@ export class ProfileResolver {
     private dataloader: DataloaderService,
   ) {}
 
-  @Query(() => Profile, { nullable: true })
+  @Query(() => [Profile])
   async profiles(
     @Args('limit', { type: () => Int }) limit: number,
     @Args('offset', { type: () => Int }) offset: number,
   ) {
-    return this.profileService.getProfiles(limit, offset);
+    return await this.profileService.getProfiles(limit, offset);
   }
 
   @Query(() => Profile, { nullable: true })
   async profile(@Args('id', { type: () => ID }) id: number) {
-    return this.profileService.getProfile(id);
+    return await this.profileService.getProfile(id);
   }
 
   @ResolveField(() => [Skill])
   async skills(@Parent() profile: Profile) {
-    return this.dataloader.skillsByProfileId.load(profile.id);
+    return await this.dataloader.skillsByProfileId.load(profile.id);
   }
 
   @ResolveField(() => [Experience])
   async experience(@Parent() profile: Profile) {
-    return this.dataloader.experienceByProfileId.load(profile.id);
+    return await this.dataloader.experienceByProfileId.load(profile.id);
   }
 
   @ResolveField(() => [Project])
   async projects(@Parent() profile: Profile) {
-    return this.dataloader.projectsByProfileId.load(profile.id);
+    return await this.dataloader.projectsByProfileId.load(profile.id);
   }
 }
