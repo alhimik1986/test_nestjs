@@ -10,6 +10,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    allowedHosts: ['alhimik1986.ru'],
     proxy: {
       '/graphql': {
         target: env.VITE_API_URL,
